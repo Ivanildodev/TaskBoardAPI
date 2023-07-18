@@ -16,9 +16,9 @@ namespace TaskBoardAPI.Data.Mappings
             builder.Property(o => o.ResponsavelId).IsRequired();
 
 
-            builder.HasOne(o => o.Card)
-                    .WithMany()
-                    .HasForeignKey(o => o.CardId);
+            builder.HasOne(t => t.Card)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(o => o.Responsavel)
                     .WithMany()
                     .HasForeignKey(o => o.ResponsavelId);
