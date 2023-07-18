@@ -6,6 +6,7 @@
         public string Nome { get; set; }
         public int Posicao { get; set; }
         public string Cor { get; set;}
+        public virtual Tarefa Tarefa { get; set; }
 
         protected Card() { }
 

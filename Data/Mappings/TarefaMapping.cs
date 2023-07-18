@@ -12,12 +12,11 @@ namespace TaskBoardAPI.Data.Mappings
 
             builder.HasKey(o => o.Id);
             builder.Property(o => o.Nome).IsRequired().HasMaxLength(100);
-            builder.Property(o => o.CardId).IsRequired();
             builder.Property(o => o.ResponsavelId).IsRequired();
 
-
             builder.HasOne(t => t.Card)
-                .WithMany()
+                .WithOne(c => c.Tarefa)
+                .HasForeignKey<Tarefa>(t => t.CardId)
                 .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(o => o.Responsavel)
                     .WithMany()

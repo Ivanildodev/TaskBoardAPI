@@ -15,7 +15,10 @@ namespace TaskBoardAPI.Data.Repositories
 
         public async Task<IEnumerable<Tarefa>> ObterComCardEResponsavelAsync()
         {
-            var resultado = await _dbSet.Include(c => c.Card).Include(c => c.Responsavel).ToListAsync();
+            var resultado = await _dbSet
+                                    .Include(t => t.Card)
+                                    .Include(t => t.Responsavel)
+                                    .ToListAsync();
 
             return resultado;
         }
